@@ -1,0 +1,60 @@
+@{
+    ViewData["Title"] = "Employee Page";
+}
+
+@model IEnumerable<EmployeeViewModel>
+@using inventory.core.Models  
+@using inventory.app.Controllers
+
+<div class="text-center">
+    <h1 class="display-4">Employee</h1>
+    <p><a href="">building a basic Inventory Mangement System with ASP.NET Core</a>.</p>
+</div>
+
+<div class="container-fluid">
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#employeeModal">
+  Add Employee
+</button>
+<br/><br/>
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First Name</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone Number</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+       @foreach (var item in Model){
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
+                <td>@Html.DisplayFor(modelItem => item.LastName)</td>
+                <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
+                <td>  
+                    <a id="editEmployeeModal" data-toggle="modal" asp-action="EditEmployee" asp-route-id="@item.Id" data-target="#modal-action-user"  
+                        class="btn btn-info">  
+                        <i class="glyphicon glyphicon-pencil"></i>  Edit  
+                    </a>                           
+                    <a id="deleteEmployeeModal" data-toggle="modal" asp-action="DeleteEmployee" asp-route-id="@item.Id" data-target="#modal-action-user" class="btn btn-danger">  
+                        <i class="glyphicon glyphicon-trash"></i>  Delete  
+                    </a>  
+                </td>
+            </tr>
+       }
+
+  </tbody>
+</table>
+</div>
+
+@* @await Html.PartialAsync("~/Views/Employee/_AddEmployee.cshtml") *@
+
+@section Scripts  
+{  
+    <script src="~/js/user-index.js" asp-append-version="true"></script> 
+}

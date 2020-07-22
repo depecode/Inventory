@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\inventory.business\inventory.business.csproj" />
+    <ProjectReference Include="..\inventory.core\inventory.core.csproj" />
+    <ProjectReference Include="..\inventory.root\inventory.root.csproj" />
+  </ItemGroup>
+
+</Project>
